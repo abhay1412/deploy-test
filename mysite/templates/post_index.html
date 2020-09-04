@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+}
+
+</style>
+<h1 align="center" class="projecttitle">Blog</h1>
+<h3 align="center" class="markscript" style="color:#b217bd;">Stories that intrigues me.</h3>
+<!--bog body starts from here-->
+
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2">
+    {% for post in pages %}
+        <div class="card mb-3 mx-auto ">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+        <a href="{% url 'post_detail' post.pk%}">
+      <img src="{{post.image.url}}" class="card-img" height="200px">
+        </a>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <a href="{% url 'post_detail' post.pk%}">
+            <h3 class="card-title">{{post.title}}</h3>
+          </a>
+        <p class="card-text">{{post.description| slice:"300" | safe}}</p>
+        <h6 class="card-text"><small class="text-muted">{{post.created_on |naturaltime}}</small></h6>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+<!--pagination code starts here-->
+{% if pages.has_other_pages %}
+  <nav aria-label="Page navigation conatiner"></nav>
+  <ul class="pagination justify-content-center">
+    {% if pages.has_previous %}
+    <li><a href="?page={{ pages.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+    {% endif %}
+    {% if pages.has_next %}
+    <li><a href="?page={{ pages.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+   {% endif %}
+  </ul>
+  </nav>
+</div>
+{% endif %}
+</div>
+{% endblock %}

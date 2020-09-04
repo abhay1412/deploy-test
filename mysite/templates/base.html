@@ -1,0 +1,80 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,300&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="{% static 'css/blog-head-font.css' %}">
+  </head>
+  <body>
+  <nav class="my-2 my-md-0" style="background-color: white">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-5 mb-3 bg-blue border-bottom shadow-sm">
+      <a class="py-2" href="{% url 'post_index' %}" aria-label="Product">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1024px-Python.svg.png" alt="Home" width="39" height="39">
+      </a>
+    <h4 class="my-0 mr-md-auto font-weight-large">Python <a href="{% url 'post_index' %}">Learning</a></h4>
+
+      <a class="p-2 text-dark" href="{% url 'post_index' %}"><h5>Blog</h5></a>
+      <a class="p-2 text-dark" href="{#}"><h5>Projects</h5></a>
+      <a class="p-2 text-dark" href="{#}"><h5>Books</h5></a>
+      <a class="p-2 text-dark" href="#"><h5></h5></a>
+    </div>
+  </nav>
+
+  {% block content %}
+
+  {% endblock %}
+
+  </body>
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <img class="mb-2" src="../assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+        <small class="d-block mb-3 text-muted">&copy; 9000 Python Learning</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="{% url 'post_index' %}">Blog</a></li>
+          <li><a class="text-muted" href="{#}">Projects</a></li>
+          <li><a class="text-muted" href="{#}">Books</a></li>
+          <li><a class="text-muted" href="#"></a></li>
+          <li><a class="text-muted" href="#"></a></li>
+          <li><a class="text-muted" href="#"></a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+
+          <li><a class="text-muted" href="#"></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+</html>

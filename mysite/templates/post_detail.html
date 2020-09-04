@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+hr.new1 {
+  border-top: 1px solid black;
+}
+hr.new2 {
+  border-top: 1px solid pink;
+}
+.underli {
+  text-decoration: underline;
+}
+</style>
+<div class="container">
+  <div class="row">
+      <div class="card-body">
+        <h1 align="center">{{ post.title }}</h1>
+        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+        <div class="mx-auto">
+          <img align="center" src="{{post.image.url}}" alt="" width="100%" >
+        </div>
+        <p class="card-text ">{{ post.description | safe }}</p>
+        <p class="card-text ">{{ post.content | safe }}</p>
+      </div>
+  </div>
+</div>
+<hr class="new1">
+      <div class="card-body" align="center">
+        <!-- comments -->
+        <h4 class="underli">{{ comments.count }} Comments</h4>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.body | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+<hr class="new2">
+      <div class="col-md-8 card mb-4  mt-3 ">
+        <div class="card-body">
+        {% if new_comment %}
+          Your comment is awaiting moderation
+        </div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ comment_form | crispy }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        {% endif %}
+        </div>
+      </div>
+
+
+{% endblock content %}
