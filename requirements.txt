@@ -1,0 +1,9 @@
+django~=3.1
+gunicorn
+django-summernote
+django-crispy-forms
+psycopg2
+pillow
+#django-heroku
+requests
+dj-config-url~=0.1.1
